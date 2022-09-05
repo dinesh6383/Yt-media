@@ -1,38 +1,507 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #202020;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 10px;
+  z-index: 10;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.app-logo img {
+  width: 80px;
+}
+
+.app-logo span {
+  color: white;
+  font-size: 19px;
+  font-weight: 600;
+  margin-left: -20px;
+}
+
+.search-bar {
+  display: flex;
+  width: 400px;
+  height: 35px;
+  position: absolute;
+  right: 50px;
+  top: 13px;
+}
+
+.search-bar input {
+  width: 90%;
+  outline: none;
+  border: none;
+  padding-left: 20px;
+  background-color: black;
+  color: rgb(159, 150, 150);
+}
+
+.search-icon {
+  background-color: #313131;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  color: white;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 800px) {
+  .search-bar {
+    width: 300px;
+    height: 35px;
+    right: 10px;
+    top: 13px;
+  }
+
+  .search-bar input {
+    width: 85%;
+  }
+
+  .search-icon {
+    width: 15%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (max-width: 400px) {
+  .search-bar {
+    width: 200px;
+  }
+}
+
+/***********************************************************
+---------------------HOME PAGE------------------------------
+************************************************************/
+
+.home-page {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.side-bar {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  width: 15vw;
+  height: 100vh;
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+  background-color: black;
+  scroll-behavior: smooth;
+}
+
+.side-bar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.side-bar::-webkit-scrollbar-track {
+  background: black;
+}
+
+.side-bar::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 3px;
+}
+
+.title-wrapper {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin-top: 40px;
+  width: 70%;
+  padding: 5px 0px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 250ms;
+}
+
+.title-wrapper:hover {
+  background-color: rgb(135, 73, 73);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.title-name {
+  margin-left: 10px;
+  font-weight: 500;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  height: max-content;
+  background-color: black;
+  margin-left: 15vw;
+  margin-top: 60px;
+  scroll-behavior: smooth;
+}
+
+.user-selection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 40px 20px;
+}
+
+.user-selection h2 {
+  color: white;
+  font-weight: bold;
+}
+
+.user-selection span {
+  color: red;
+}
+
+.thumbs-holder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+}
+
+.vid-card,
+.channel-card {
+  width: 300px;
+  height: 300px;
+  margin: 5px;
+  background-color: #1e1e1e;
+  cursor: pointer;
+}
+
+.channel-card {
+  padding-top: 30px;
+}
+
+.channel-card-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-left: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.channel-name {
+  width: 100%;
+  height: 30px;
+  color: white;
+  margin-top: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.vid-card-img {
+  width: 100%;
+  height: 170px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.vid-card img {
+  width: 100%;
+  height: 210px;
+}
+
+.vid-card-description {
+  color: white;
+  padding: 5px;
+}
+
+.vid-card-description .top {
+  font-weight: 500;
+}
+
+.vid-card-description .below {
+  color: gray;
+}
+
+.sub-count {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+  .home-page {
+    flex-direction: column;
+    height: 100%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .side-bar {
+    flex-direction: row;
+    height: 8%;
+    width: 100vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0px 15px;
+  }
+
+  .side-bar::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .side-bar::-webkit-scrollbar-track {
+    background: black;
+  }
+
+  .side-bar::-webkit-scrollbar-thumb {
+    background: rgb(59, 57, 57);
+    border-radius: 10px;
+  }
+
+  .title-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    margin-top: 0px;
+    padding: 10px;
+    height: 30px;
+    border: 2px solid red;
+  }
+
+  .title-name,
+  .title-icon {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+  }
+
+  .thumbnails {
+    width: 100%;
+    margin-top: 23%;
+    margin-left: 0px;
+  }
+  .thumbs-holder {
+    justify-content: center;
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .thumbnails {
+    margin-top: 33%;
+  }
+  .vid-card {
+    width: 100%;
+  }
+}
+
+/***********************************************************
+---------------------Channel PAGE------------------------------
+************************************************************/
+.channel-page {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  margin-top: 60px;
+}
+
+.title-card {
+  width: 100%;
+  height: 35vh;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 238, 247, 1) 0%,
+    rgba(206, 3, 184, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.channel-image {
+  width: 200px;
+  height: 200px;
+  margin-left: 45%;
+  margin-top: -90px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.channel-videos {
+  width: 100%;
+  height: max-content;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .channel-image {
+    margin-left: 37%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .channel-image {
+    margin-left: 25%;
+  }
+}
+
+/***********************************************************
+---------------------VIDEO PAGE------------------------------
+************************************************************/
+.vid-page {
+  width: 100%;
+  height: 100%;
+  margin-top: 60px;
+  background-color: #181818;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.vid-player {
+  width: 60%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px;
+}
+
+.video {
+  width: 100%;
+  height: 80%;
+}
+
+.vid-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 10px;
+}
+
+.vid-title h2 {
+  color: white;
+  font-size: 25px;
+}
+
+.vid-title p {
+  color: gray;
+}
+
+.other-stuff {
+  color: white;
+}
+
+.vid-description {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 0px 15px;
+}
+
+.vid-description p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.vid-description button {
+  background-color: #cc0000;
+  color: white;
+  padding: 5px 7px;
+  border-radius: 5px;
+}
+
+.suggested-column {
+  width: 21%;
+  height: 100%;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin-top: 10px;
+}
+
+.suggested-column span {
+  color: red;
+}
+
+.suggested-column h2 {
+  padding: 10px;
+  color: white;
+  font-weight: 700;
+  padding: 0px 5px;
+}
+
+.suggested-videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  .vid-page {
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 0px 10px;
+  }
+  .vid-player {
+    width: 100%;
+    height: 80vh;
+  }
+  .suggested-column {
+    width: 100%;
+  }
+  .vid-title h2 {
+    font-size: 17px;
+  }
+  .vid-title {
+    flex-direction: column;
+  }
+  .suggested-column {
+    border: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .vid-page {
+    padding: 0px;
+  }
+
+  .vid-player {
+    width: 100%;
+    height: 40vh;
+    padding: 0px;
   }
 }
