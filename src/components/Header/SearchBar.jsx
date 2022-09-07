@@ -8,7 +8,8 @@ const SearchBar = () => {
   const { setActiveMenu } = useContext(mainMenu);
   const navigate = useNavigate();
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault();
     searchedVids && setActiveMenu(searchedVids);
     setSearchedVids("");
     navigate("/");
@@ -25,7 +26,20 @@ const SearchBar = () => {
           placeholder="Search Here..."
         ></input>
         <div onClick={submit} className="search-icon">
-          <AiOutlineSearch />
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "transparent",
+              outline: "none",
+              border: "none",
+              color: "white",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <AiOutlineSearch />
+          </button>
         </div>
       </div>
     </form>

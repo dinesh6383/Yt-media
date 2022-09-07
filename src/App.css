@@ -495,13 +495,8 @@
 }
 
 @media screen and (max-width: 400px) {
-  .vid-page {
-    padding: 0px;
-  }
-
   .vid-player {
     width: 100%;
     height: 40vh;
-    padding: 0px;
   }
 }
